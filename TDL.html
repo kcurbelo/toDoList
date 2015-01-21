@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TO DO List</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" />
+
+
+</head>
+<body>
+<div class="page-header">
+    <h1> To Do List</h1>
+
+    <!--This is where we need to keep count -->
+    Items Remaining:&nbsp;&nbsp; <span id="count"  class="label label-default">  </span>
+</div>
+<div id="panel" class="panel">
+    <div class="input-group">
+        <!--The Add Item Box-->
+        <input class="form-control" type="text" name="item-input" />
+            <span class="input-group-btn">
+                <!--Button to add the text-->
+                <button id="add-item" class="btn btn-default" >Add</button>
+            </span>
+    </div>
+
+    <!--Table to add the items-->
+    <table id="listTable" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Description</th>
+            <th>Completed</th>
+            <th>Remove</th>
+        </tr>
+        </thead>
+        <tbody id="tBody">
+        <tr>
+            <!--Rows will be added here-->
+
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+<script>
+
+  document.getElementById("add-item").addEventListener("click", function (){//adding an event listener that is waiting for the onlick to run the function 
+      var tBody = document.getElementById("tBody");
+      var itemInput = document.getElementsByName("item-input")[0].value;
+      var count = 0
+      var tR = document.createElement("tr");
+      var td1 = document.createElement("td");
+          td1.innerHTML = itemInput;
+          tR.appendChild(td1);//put first column in our row
+      var td2 = document.createElement("td");
+      var newCheckbox1 = document.createElement("input")
+          newCheckbox1.type = "checkbox";
+          newCheckbox1.value = 0; 
+
+          newCheckbox1.addEventListener("click", function (){///is the eventListener the same as have a whole function that has an onclick function ... making the code shorter.
+            var checkBoxValue = this.value; 
+              if(checkBoxValue == '1'){
+                this.value = 1; 
+                count = count + 1
+                document.getElementById("count").innerHTML = count; 
+                }
+              else {
+
+              }
+          })
+  })
+
+</script>
+</body>
+</html>
